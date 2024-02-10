@@ -1,6 +1,3 @@
-# Helm install command
-# helm install cert-manager jetstack/cert-manager --namespace cert-manager --create-namespace --version v1.14.2 --set installCRDs=true
-
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
@@ -10,9 +7,14 @@ spec:
   project: default
 
   source:
-    repoURL: https://gitlab.com/nanuchi/argocd-app-config.git
-    targetRevision: HEAD
-    path: apps/certmanager
+    repoURL: https://charts.jetstack.io
+    chart: cert-manager
+    targetRevision: v1.14.2
+    helm:
+      parameters:
+        - name: installCRDs
+          value: "true"
+
   destination: 
     server: https://kubernetes.default.svc
     namespace: certmanager
