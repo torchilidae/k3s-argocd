@@ -1,3 +1,4 @@
 resources:
   - certmananger.yaml
   - argocd.yaml
+  - sealedsecret.yaml
