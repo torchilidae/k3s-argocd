@@ -1,10 +1,10 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: certmanager-app
+  name: certmanager-app-clone
   namespace: argocd
 spec:
-  project: default
+  project: clone
 
   source:
     repoURL: https://github.com/torchilidae/k3s-argocd.git
