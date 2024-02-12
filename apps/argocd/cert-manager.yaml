@@ -6,7 +6,7 @@ metadata:
 spec:
   secretName: argocd-cert
   issuerRef:
-    name: ca-issuer
+    name: acme-issuer
     kind: ClusterIssuer
   dnsNames:
     - "*.k3s.tsphotoclicks.net"
