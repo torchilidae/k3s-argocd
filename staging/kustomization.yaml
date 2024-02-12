@@ -2,3 +2,6 @@ resources:
   - argocd.yaml
   - certmananger.yaml
   - sealedsecret.yaml
+
+  # Secrets
+  - secrets/cloudflare.yaml
