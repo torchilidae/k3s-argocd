@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: certmanager-app-clone
+  name: certmanager-setup
   namespace: argocd
 spec:
   project: clone
