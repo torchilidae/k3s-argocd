@@ -19,12 +19,12 @@ spec:
         env:
         - name: TFC_AGENT_NAME
           valueFrom:
-            secreteKeyRef:
+            secretKeyRef:
               name: terraform-agent-secret
               key: agent-name
 
         - name: TFC_AGENT_TOKEN
           valueFrom:
-            secreteKeyRef:
+            secretKeyRef:
               name: terraform-agent-secret
               key: agent-token
