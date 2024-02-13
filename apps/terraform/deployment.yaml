@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
       - name: tfc-agent
-        image: hashicorp/tfc-agent:latest
+        image: hashicorp/tfc-agent:1.14.3
         env:
         - name: TFC_AGENT_NAME
           valueFrom:
