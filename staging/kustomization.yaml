@@ -3,7 +3,9 @@ resources:
   - certmananger.yaml
   - sealedsecret.yaml
   # - terraform.yaml
+  - homepage.yaml
 
   # Secrets
   - secrets/cloudflare.yaml
   # - secrets/terraform.yaml
+  - secrets/homepage.yaml

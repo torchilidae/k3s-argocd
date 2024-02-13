@@ -1,17 +1,17 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: terraform-setup
+  name: homepage-setup
   namespace: argocd
 spec:
   project: clone
   source:
     repoURL: https://github.com/torchilidae/k3s-argocd.git
     targetRevision: main
-    path: apps/terraform
+    path: apps/homepage
   destination: 
     server: https://kubernetes.default.svc
-    namespace: terraform
+    namespace: homepage
   syncPolicy:
     syncOptions:
     - CreateNamespace=true
