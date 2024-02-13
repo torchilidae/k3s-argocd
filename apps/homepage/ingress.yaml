@@ -3,6 +3,8 @@ kind: IngressRoute
 metadata:
   name: homepage
   namespace: homepage
+  annotations:
+    gethomepage.dev/href: "https://homepage.k3s.tsphotoclicks.net"
 spec:
   entryPoints:
     - websecure
@@ -17,8 +19,12 @@ spec:
       match: Host(`homepage.k3s.tsphotoclicks.net`) && Headers(`Content-Type`, `application/grpc`)
       priority: 11
       services:
-        - name: homepage
-          port: 80
-          scheme: h2c
+        - kind: Service
+          name: homepage
+          namespace: homepage
+          port: 8080
+          scheme: http
+          strategy: RoundRobin
+          weight: 10
   tls:
-    secretName: homepage-cert
+    secretName: default
