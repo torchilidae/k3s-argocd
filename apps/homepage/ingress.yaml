@@ -47,6 +47,10 @@ spec:
     - host: "homepage.k3s.tsphotoclicks.net"
       http:
         paths:
-          - backend:
-              serviceName: homepage
-              ServicePort: 3000
+          - path: "/"
+            pathType: Prefix
+            backend:
+              service:
+                name: homepage
+                port:
+                  number: 3000
