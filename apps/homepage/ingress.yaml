@@ -48,7 +48,5 @@ spec:
       http:
         paths:
           - backend:
-              service:
-                name: homepage
-                port:
-                  number: 3000
+              serviceName: homepage
+              ServicePort: 3000
