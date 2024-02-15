@@ -14,43 +14,6 @@ spec:
       priority: 10
       services:
         - name: homepage
-          port: 3000
-    - kind: Rule
-      match: Host(`homepage.k3s.tsphotoclicks.net`) && Headers(`Content-Type`, `application/grpc`)
-      priority: 11
-      services:
-        - kind: Service
-          name: homepage
-          namespace: homepage
-          port: 3000
-          scheme: http
-          strategy: RoundRobin
-          weight: 10
+          port: http
   tls:
     secretName: default
----
-apiVersion: networking.k8s.io/v1
-kind: Ingress
-metadata:
-  name: homepage
-  namespace: homepage
-  labels:
-    app.kubernetes.io/name: homepage
-  annotations:
-    gethomepage.dev/description: Dynamically Detected Homepage
-    gethomepage.dev/enabled: "true"
-    gethomepage.dev/group: Cluster Management
-    gethomepage.dev/icon: homepage.png
-    gethomepage.dev/name: Homepage
-spec:
-  rules:
-    - host: "homepage.k3s.tsphotoclicks.net"
-      http:
-        paths:
-          - path: "/"
-            pathType: Prefix
-            backend:
-              service:
-                name: homepage
-                port:
-                  number: 3000
