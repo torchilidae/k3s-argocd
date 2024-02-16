@@ -55,7 +55,7 @@ metadata:
   name: https-nginx
   # namespace: resume
   annotations:
-    kubernetes.io/ingress.class: traefik
+    kubernetes.io/ingress.class: "traefik"
     # cert-manager.io/cluster-issuer: letsencrypt-staging
     traefik.ingress.kubernetes.io/router.middlewares: certmanager-redirect-https@kubernetescrd
 spec:
