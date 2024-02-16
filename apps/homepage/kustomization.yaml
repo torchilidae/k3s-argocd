@@ -1,5 +1,7 @@
 resources:
+  - clusterrole.yaml
+  - configmap.yaml
   - deployment.yaml
-  - config.yaml
   - ingress.yaml
+  - secret.yaml
   - service.yaml

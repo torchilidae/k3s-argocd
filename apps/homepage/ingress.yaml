@@ -1,33 +1,26 @@
-apiVersion: traefik.containo.us/v1alpha1
-kind: IngressRoute
+apiVersion: networking.k8s.io/v1
+kind: Ingress
 metadata:
-  name: homepage
-  namespace: homepage
-  annotations:
-    gethomepage.dev/href: "https://homepage.k3s.tsphotoclicks.net"
-    gethomepage.dev/enabled: "true"
-    gethomepage.dev/description: Media Server
-    gethomepage.dev/group: Media
-    gethomepage.dev/icon: emby.png
-    gethomepage.dev/name: Homepage
-    gethomepage.dev/widget.type: "emby"
-    gethomepage.dev/widget.url: "https://homepage.k3s.tsphotoclicks.net"
-    gethomepage.dev/pod-selector: ""
-    gethomepage.dev/weight: 10 # optional
-    gethomepage.dev/instance: "public" # optional
+    name: homepage
+    namespace: homepage
+    labels:
+        app.kubernetes.io/name: homepage
+    annotations:
+        gethomepage.dev/description: Dynamically Detected Homepage
+        gethomepage.dev/enabled: "true"
+        gethomepage.dev/group: Cluster Management
+        gethomepage.dev/icon: homepage.png
+        gethomepage.dev/name: Homepage
+        kubernetes.io/ingress.class: traefik
 spec:
-  entryPoints:
-    - websecure
-  routes:
-    - kind: Rule
-      match: Host(`homepage.k3s.tsphotoclicks.net`)
-      services:
-        - kind: Service
-          name: homepage
-          namespace: homepage
-          port: 8080
-          scheme: http
-          strategy: RoundRobin
-          weight: 10
-  tls:
-    secretName: default
+    rules:
+        - host: "homepage.k3s.tsphotoclicks.net"
+          http:
+              paths:
+                  - path: "/"
+                    pathType: Prefix
+                    backend:
+                        service:
+                            name: homepage
+                            port:
+                                number: 3000
