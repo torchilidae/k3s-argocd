@@ -13,7 +13,7 @@ spec:
         - name: argocd-server
           port: 80
       middlewares:
-        - name: https-redirect
+        - name: redirect-https
           namespace: certmanager
 ---
 apiVersion: traefik.containo.us/v1alpha1
