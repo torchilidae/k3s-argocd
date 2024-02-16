@@ -1,43 +1,34 @@
-apiVersion: traefik.containo.us/v1alpha1
-kind: Middleware
-metadata:
-  name: https-redirect
-spec:
-  redirectScheme:
-    scheme: https
-    permanent: true
----
-apiVersion: traefik.containo.us/v1alpha1
-kind: IngressRoute
-metadata:
-  name: http-redirect-ingressroute
-spec:
-  entryPoints:
-    - web
-  routes:
-    - match: Host(`nginx.k3s.tsphotoclicks.net`)
-      kind: Rule
-      services:
-        - name: hello-world
-          port: 80
-      middlewares:
-        - name: https-redirect
----
-apiVersion: traefik.containo.us/v1alpha1
-kind: IngressRoute
-metadata:
-  name: https-ingressroute
-spec:
-  entryPoints:
-    - websecure
-  routes:
-    - match: Host(`nginx.k3s.tsphotoclicks.net`)
-      kind: Rule
-      services:
-        - name: hello-world
-          port: 80
-  tls:
-    secretName: default
+# apiVersion: traefik.containo.us/v1alpha1
+# kind: IngressRoute
+# metadata:
+#   name: http-redirect-ingressroute
+# spec:
+#   entryPoints:
+#     - web
+#   routes:
+#     - match: Host(`nginx.k3s.tsphotoclicks.net`)
+#       kind: Rule
+#       services:
+#         - name: hello-world
+#           port: 80
+#       middlewares:
+#         - name: https-redirect
+# ---
+# apiVersion: traefik.containo.us/v1alpha1
+# kind: IngressRoute
+# metadata:
+#   name: https-ingressroute
+# spec:
+#   entryPoints:
+#     - websecure
+#   routes:
+#     - match: Host(`nginx.k3s.tsphotoclicks.net`)
+#       kind: Rule
+#       services:
+#         - name: hello-world
+#           port: 80
+#   tls:
+#     secretName: default
 # ---
 # apiVersion: networking.k8s.io/v1
 # kind: Ingress
@@ -57,3 +48,27 @@ spec:
 #             name: hello-world
 #             port:
 #               number: 80
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: https-nginx
+  # namespace: resume
+  annotations:
+    kubernetes.io/ingress.class: traefik
+    # cert-manager.io/cluster-issuer: letsencrypt-staging
+    traefik.ingress.kubernetes.io/router.middlewares: certmanager-redirect-https@kubernetescrd
+spec:
+  rules:
+  - host: nginx.k3s.tsphotoclicks.net
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: hello-world
+            port:
+              number: 80
+  tls:
+    secretName: default

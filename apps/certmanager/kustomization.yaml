@@ -1,3 +1,4 @@
 resources:
   - certmanager.yaml
   - acme-issuer.yaml
+  - ingress.yaml
