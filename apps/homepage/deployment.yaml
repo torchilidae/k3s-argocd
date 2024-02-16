@@ -10,9 +10,6 @@ spec:
     replicas: 1
     strategy:
         type: RollingUpdate
-    selector:
-        matchLabels:
-            app.kubernetes.io/name: homepage
     template:
         metadata:
             labels:
