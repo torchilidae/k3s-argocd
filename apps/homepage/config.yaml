@@ -12,13 +12,11 @@ data:
     title: TS Photoclicks Homepage
 
     background:
-      image: https://cdnb.artstation.com/p/assets/images/images/006/897/659/large/mikael-gustafsson-wallpaper-mikael-gustafsson.jpg
+      image: https://bing.com/th?id=OHR.BackyardBird_EN-US8255123787_1920x1080.jpg&rf=LaDigue_1920x1080.jpg
       blur: sm
-      saturate: 100
-      brightness: 50
-      opacity: 100
 
-    useEqualHeights: true
+    theme: dark
+    color: slate
 
     layout:
       Hypervisor:

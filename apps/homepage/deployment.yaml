@@ -12,13 +12,10 @@ spec:
     matchLabels:
       app: homepage
   replicas: 3
-  progressDeadlineSeconds: 600
-  revisionHistoryLimit: 1
   strategy:
     type: RollingUpdate
     rollingUpdate:
-      maxUnavailable: 25%
-      maxSurge: 1
+      maxSurge: 2
   template:
     metadata:
       labels:
@@ -29,10 +26,6 @@ spec:
       containers:
         - name: homepage
           image: ghcr.io/gethomepage/homepage:latest
-          resources:
-            requests:
-              memory: 128Mi
-              cpu: 200m
           ports:
             - containerPort: 3000
               name: http
