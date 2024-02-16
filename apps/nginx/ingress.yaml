@@ -1,66 +1,12 @@
-# apiVersion: traefik.containo.us/v1alpha1
-# kind: IngressRoute
-# metadata:
-#   name: http-redirect-ingressroute
-# spec:
-#   entryPoints:
-#     - web
-#   routes:
-#     - match: Host(`nginx.k3s.tsphotoclicks.net`)
-#       kind: Rule
-#       services:
-#         - name: hello-world
-#           port: 80
-#       middlewares:
-#         - name: https-redirect
-# ---
-# apiVersion: traefik.containo.us/v1alpha1
-# kind: IngressRoute
-# metadata:
-#   name: https-ingressroute
-# spec:
-#   entryPoints:
-#     - websecure
-#   routes:
-#     - match: Host(`nginx.k3s.tsphotoclicks.net`)
-#       kind: Rule
-#       services:
-#         - name: hello-world
-#           port: 80
-#   tls:
-#     secretName: default
-# ---
-# apiVersion: networking.k8s.io/v1
-# kind: Ingress
-# metadata:
-#   name: hello-world
-#   annotations:
-#     kubernetes.io/ingress.class: "traefik"
-# spec:
-#   rules:
-#   - host: "nginx.k3s.tsphotoclicks.net"
-#     http:
-#       paths:
-#       - path: /
-#         pathType: Prefix
-#         backend:
-#           service:
-#             name: hello-world
-#             port:
-#               number: 80
----
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: hello-world
-  # namespace: resume
   annotations:
-    kubernetes.io/ingress.class: traefik
-    # cert-manager.io/cluster-issuer: letsencrypt-staging
-    # traefik.ingress.kubernetes.io/router.middlewares: certmanager-redirect-https@kubernetescrd
+    kubernetes.io/ingress.class: "traefik"
 spec:
   rules:
-  - host: nginx.k3s.tsphotoclicks.net
+  - host: "nginx.k3s.tsphotoclicks.net"
     http:
       paths:
       - path: /
@@ -70,5 +16,3 @@ spec:
             name: hello-world
             port:
               number: 80
-  tls:
-    secretName: default
