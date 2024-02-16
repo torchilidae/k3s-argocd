@@ -4,6 +4,7 @@ resources:
   - sealedsecret.yaml
   # - terraform.yaml
   # - homepage.yaml
+  - nginx.yaml
 
   # Secrets
   - secrets/cloudflare.yaml
