@@ -1,4 +1,4 @@
-apiVersion: traefik.io/v1alpha1
+apiVersion: traefik.containo.us/v1alpha1
 kind: Middleware
 metadata:
   name: https-redirect
@@ -7,7 +7,7 @@ spec:
     scheme: https
     permanent: true
 ---
-apiVersion: traefik.io/v1alpha1
+apiVersion: traefik.containo.us/v1alpha1
 kind: IngressRoute
 metadata:
   name: http-redirect-ingressroute
@@ -23,7 +23,7 @@ spec:
       middlewares:
         - name: https-redirect
 ---
-apiVersion: traefik.io/v1alpha1
+apiVersion: traefik.containo.us/v1alpha1
 kind: IngressRoute
 metadata:
   name: https-ingressroute
