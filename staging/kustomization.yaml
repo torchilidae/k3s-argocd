@@ -3,7 +3,7 @@ resources:
   - certmananger.yaml
   - sealedsecret.yaml
   # - terraform.yaml
-  # - homepage.yaml
+  - homepage.yaml
   - nginx.yaml
 
   # Secrets
