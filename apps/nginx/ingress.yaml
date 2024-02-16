@@ -4,6 +4,7 @@ metadata:
   name: hello-world
   annotations:
     kubernetes.io/ingress.class: "traefik"
+    traefik.ingress.kubernetes.io/router.middlewares: certmanager-redirect-https@kubernetescrd
 spec:
   rules:
   - host: "nginx.k3s.tsphotoclicks.net"
