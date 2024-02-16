@@ -1,4 +1,13 @@
 apiVersion: traefik.containo.us/v1alpha1
+kind: Middleware
+metadata:
+  name: redirect-hello-world
+spec:
+  redirectScheme:
+    scheme: https
+    permanent: true
+---
+apiVersion: traefik.containo.us/v1alpha1
 kind: IngressRoute
 metadata:
   name: http-hello-world
@@ -12,8 +21,7 @@ spec:
         - name: hello-world
           port: 80
       middlewares:
-        - name: redirect-https
-          namespace: certmanager
+        - name: redirect-hello-world
 ---
 apiVersion: traefik.containo.us/v1alpha1
 kind: IngressRoute
