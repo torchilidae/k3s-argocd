@@ -11,9 +11,6 @@ spec:
     strategy:
         type: RollingUpdate
     template:
-        metadata:
-            labels:
-                app.kubernetes.io/name: homepage
         spec:
             serviceAccountName: homepage
             automountServiceAccountToken: true
