@@ -17,7 +17,7 @@ spec:
   entryPoints:
     - web
   routes:
-    - match: Host(`argocd.k3s.tsphotoclicks.net`)
+    - match: Host(`argocd.k3s.tsphotoclicks.net`) || (Host(`argocd.k3s.tsphotoclicks.net`) && Path(`/`))
       kind: Rule
       services:
         - name: argocd-server
