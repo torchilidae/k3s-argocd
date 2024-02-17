@@ -1,20 +1,24 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: reloader-setup
+  name: reloader-app
   namespace: argocd
 spec:
-  project: clone
+  project: default
+
   source:
-    repoURL: https://github.com/torchilidae/k3s-argocd.git
-    targetRevision: main
-    path: apps/reloader
+    repoURL: https://stakater.github.io/stakater-charts
+    chart: reloader
+    targetRevision: v1.0.67
+
   destination: 
     server: https://kubernetes.default.svc
     namespace: reloader
+
   syncPolicy:
     syncOptions:
     - CreateNamespace=true
+
     automated:
       selfHeal: true
       prune: true
