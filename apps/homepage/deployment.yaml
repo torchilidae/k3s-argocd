@@ -86,7 +86,7 @@ spec:
           configMap:
             name: homepage
         - name: homepage-background
-          configMap:
-            name: homepage-background
+          secret:
+            secretName: homepage-background
         - name: logs
           emptyDir: {}
