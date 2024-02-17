@@ -12,8 +12,7 @@ data:
     title: TS Photoclicks Homepage
 
     background:
-      image: https://cdna.artstation.com/p/assets/images/images/051/102/990/large/gioele-muscolino-artstation-post-8.jpg?1656458283
-      blur: sm
+      image: /images/background.jpg
 
     theme: dark
     color: slate
@@ -36,15 +35,15 @@ data:
     - Hypervisor:
         - Proxmox-1:
             icon: proxmox.svg
-            href: "https://pve1.tsphotoclicks.net:8006"
+            href: "{{HOMEPAGE_VAR_PROXMOX_1_URL}}"
             description: pve1
         - Proxmox-2:
             icon: proxmox.svg
-            href: "https://pve2.tsphotoclicks.net:8006"
+            href: "{{HOMEPAGE_VAR_PROXMOX_2_URL}}"
             description: pve2
         - Proxmox-3:
             icon: proxmox.svg
-            href: "https://pve3.tsphotoclicks.net:8006"
+            href: "{{HOMEPAGE_VAR_PROXMOX_3_URL}}"
             description: pve3
     - Other:
         - GitLab:

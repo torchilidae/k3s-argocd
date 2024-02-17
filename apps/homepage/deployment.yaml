@@ -26,6 +26,13 @@ spec:
       containers:
         - name: homepage
           image: ghcr.io/gethomepage/homepage:latest
+          resources:
+            requests:
+              memory: 128Mi
+              cpu: 200m
+          envFrom:
+            - secretRef:
+              name: homepage-secret
           ports:
             - containerPort: 3000
               name: http
@@ -45,6 +52,9 @@ spec:
             periodSeconds: 10
             timeoutSeconds: 5
           volumeMounts:
+            - mountPath: /app/public/images/background.jpg
+              name: homepage-background
+              subPath: background.jpg
             - mountPath: /app/config/custom.js
               name: homepage-config
               subPath: custom.js
@@ -75,5 +85,8 @@ spec:
         - name: homepage-config
           configMap:
             name: homepage
+        - name: homepage-background
+          configMap:
+            name: homepage-background
         - name: logs
           emptyDir: {}
