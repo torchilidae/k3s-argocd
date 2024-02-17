@@ -4,7 +4,7 @@ metadata:
   name: nginx-app
   namespace: argocd
 spec:
-  project: clone
+  project: default
   source:
     repoURL: https://github.com/torchilidae/k3s-argocd.git
     targetRevision: main
