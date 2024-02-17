@@ -3,4 +3,4 @@ resources:
   - service.yaml
   - ingress.yaml
   - config.yaml
-  - background.yaml
+  # - background.yaml

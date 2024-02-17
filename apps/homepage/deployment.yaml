@@ -52,9 +52,9 @@ spec:
             periodSeconds: 10
             timeoutSeconds: 5
           volumeMounts:
-            - mountPath: /app/public/images/background.jpg
-              name: homepage-background
-              subPath: background.jpg
+            # - mountPath: /app/public/images/background.jpg
+            #   name: homepage-background
+            #   subPath: background.jpg
             - mountPath: /app/config/custom.js
               name: homepage-config
               subPath: custom.js
@@ -85,8 +85,8 @@ spec:
         - name: homepage-config
           configMap:
             name: homepage
-        - name: homepage-background
-          secret:
-            secretName: homepage-background
+        # - name: homepage-background
+        #   secret:
+        #     secretName: homepage-background
         - name: logs
           emptyDir: {}
