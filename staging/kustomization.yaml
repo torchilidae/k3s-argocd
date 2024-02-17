@@ -5,6 +5,7 @@ resources:
   # - terraform.yaml
   - homepage.yaml
   - nginx.yaml
+  - reloader.yaml
 
   # Secrets
   - secrets/cloudflare.yaml
