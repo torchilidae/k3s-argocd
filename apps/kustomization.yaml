@@ -1,0 +1,5 @@
+resources:
+  # argocd
+  - argocd/app.yaml
+  - argocd/cert-manager.yaml
+  - argocd/ingress.yaml

@@ -9,4 +9,4 @@ spec:
     name: acme-issuer
     kind: ClusterIssuer
   dnsNames:
-    - "*.k3s.tsphotoclicks.net"
+    - "*.ltc.tsphotoclicks.net"

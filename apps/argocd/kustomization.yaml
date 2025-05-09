@@ -1,4 +1,0 @@
-resources:
-  - argocd.yaml
-  - ingress.yaml
-  - cert-manager.yaml
