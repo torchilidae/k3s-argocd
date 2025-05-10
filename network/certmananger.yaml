@@ -37,7 +37,6 @@ spec:
     server: https://acme-v02.api.letsencrypt.org/directory
     privateKeySecretRef:
       name: acme-issuer-account-key
-      key: api-token
     solvers:
     - dns01:
         cloudflare:
