@@ -1,2 +1,3 @@
 resources:
   - longhorn/app.yaml
+  - longhorn/ingress.yaml
