@@ -42,7 +42,7 @@ spec:
         - name: argocd-server
           port: 80
     - kind: Rule
-      match: Host(`argocd.ltc.tsphotoclicks.net`) && Headers(`Content-Type`, `application/grpc`)
+      match: Host(`argocd.ltc.tsphotoclicks.net`) && Header(`Content-Type`, `application/grpc`)
       priority: 11
       services:
         - name: argocd-server
