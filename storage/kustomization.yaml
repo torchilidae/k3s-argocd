@@ -1,3 +1,4 @@
 resources:
   - longhorn/app.yaml
+  - longhorn/cert-manager.yaml
   - longhorn/ingress.yaml
