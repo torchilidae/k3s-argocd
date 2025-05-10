@@ -1,0 +1,44 @@
+apiVersion: traefik.io/v1alpha1
+kind: Middleware
+metadata:
+  name: redirect-longhorn
+  namespace: longhorn-system
+spec:
+  redirectScheme:
+    scheme: https
+    permanent: true
+---
+apiVersion: traefik.io/v1alpha1
+kind: IngressRoute
+metadata:
+  name: http-longhorn
+  namespace: longhorn-system
+spec:
+  entryPoints:
+    - web
+  routes:
+    - match: Host(`longhorn.ltc.tsphotoclicks.net`)
+      kind: Rule
+      services:
+        - name: longhorn-frontend
+          port: 8000
+      middlewares:
+        - name: redirect-longhorn
+          namespace: longhorn-system
+---
+apiVersion: traefik.io/v1alpha1
+kind: IngressRoute
+metadata:
+  name: https-longhorn
+  namespace: longhorn-system
+spec:
+  entryPoints:
+    - websecure
+  routes:
+    - kind: Rule
+      match: Host(`longhorn.ltc.tsphotoclicks.net`)
+      services:
+        - name: longhorn-frontend
+          port: 8000
+  tls:
+    secretName: default
