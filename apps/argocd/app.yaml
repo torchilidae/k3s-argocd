@@ -6,8 +6,17 @@ metadata:
 spec:
   project: apps
   source:
-    repoURL: https://github.com/argoproj/argo-cd.git
-    targetRevision: main
+    repoURL: https://argoproj.github.io/argo-helm
+    chart: charts/argo-cd
+    helm:
+      parameters:
+        - name: installCRDs
+          value: "true"
+    valuesObject:
+      argo-cd:
+          server:
+            extraArgs:
+              - --insecure
 
   destination: 
     server: https://kubernetes.default.svc
