@@ -1,0 +1,5 @@
+resources:
+  - certmanager.yaml
+  - deployment.yaml
+  - ingress.yaml
+  - volumes.yaml

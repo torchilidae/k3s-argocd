@@ -1,19 +1,20 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: hello-world-nginx
+  name: uptimekuma
+  labels:
+    app: uptimekuma
 spec:
   selector:
     matchLabels:
-      app: hello-world
-  replicas: 3
+      app: uptimekuma
   template:
     metadata:
       labels:
-        app: hello-world
+        app: uptimekuma
     spec:
       containers:
-      - name: nginx
-        image: nginx
+      - name: uptimekuma
+        image: elestio/uptime-kuma:1.23.15
         ports:
-        - containerPort: 80
+        - containerPort: 3001

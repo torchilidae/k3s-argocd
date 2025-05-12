@@ -2,7 +2,7 @@ apiVersion: traefik.io/v1alpha1
 kind: Middleware
 metadata:
   name: redirect-uptimekuma
-  namespace: uptimekuma-system
+  namespace: uptimekuma
 spec:
   redirectScheme:
     scheme: https
@@ -12,7 +12,7 @@ apiVersion: traefik.io/v1alpha1
 kind: IngressRoute
 metadata:
   name: http-uptimekuma
-  namespace: uptimekuma-system
+  namespace: uptimekuma
 spec:
   entryPoints:
     - web
@@ -20,17 +20,17 @@ spec:
     - match: Host(`uptimekuma.ltc.tsphotoclicks.net`)
       kind: Rule
       services:
-        - name: uptimekuma-frontend
+        - name: uptimekuma
           port: 80
       middlewares:
         - name: redirect-uptimekuma
-          namespace: uptimekuma-system
+          namespace: uptimekuma
 ---
 apiVersion: traefik.io/v1alpha1
 kind: IngressRoute
 metadata:
   name: https-uptimekuma
-  namespace: uptimekuma-system
+  namespace: uptimekuma
 spec:
   entryPoints:
     - websecure
@@ -38,7 +38,7 @@ spec:
     - kind: Rule
       match: Host(`uptimekuma.ltc.tsphotoclicks.net`)
       services:
-        - name: uptimekuma-frontend
-          port: 80
+        - name: uptimekuma
+          port: 3001
   tls:
     secretName: uptimekuma-cert

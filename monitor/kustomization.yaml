@@ -1,4 +1,2 @@
 resources:
   - uptimekuma/app.yaml
-  - uptimekuma/deployment.yaml
-  - uptimekuma/ingress.yaml
