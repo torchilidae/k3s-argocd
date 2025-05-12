@@ -21,7 +21,7 @@ spec:
       kind: Rule
       services:
         - name: uptimekuma
-          port: 80
+          port: 3001
       middlewares:
         - name: redirect-uptimekuma
           namespace: uptimekuma
