@@ -1,20 +1,24 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: terraform-setup
+  name: uptimekuma-app
   namespace: argocd
 spec:
-  project: default
+  project: monitor
+
   source:
     repoURL: https://github.com/torchilidae/k3s-argocd.git
     targetRevision: main
-    path: apps/terraform
-  destination: 
+    path: monitor/uptimekuma
+
+  destination:
     server: https://kubernetes.default.svc
-    namespace: terraform
+    namespace: monitor
+
   syncPolicy:
     syncOptions:
-    - CreateNamespace=true
+      - CreateNamespace=true
+    
     automated:
       selfHeal: true
       prune: true

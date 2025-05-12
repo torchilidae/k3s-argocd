@@ -6,7 +6,7 @@ metadata:
 spec:
   project: apps
   source:
-    repoURL: https://github.com/torchilidae/k3s-argocd.git
+    repoURL: https://github.com/argoproj/argo-cd.git
     targetRevision: main
 
   destination: 

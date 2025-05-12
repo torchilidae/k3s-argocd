@@ -1,2 +1,2 @@
 resources:
-  - sealedsecret.yaml
+  - sealedsecret/app.yaml
