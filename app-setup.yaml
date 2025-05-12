@@ -1,0 +1,20 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: storage
+spec:
+  destination:
+    namespace: ''
+    server: https://kubernetes.default.svc
+  source:
+    path: storage
+    repoURL: git@github.com:torchilidae/k3s-argocd.git
+    targetRevision: HEAD
+  sources: []
+  project: storage
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+
+# kubectl create -f app-setup.yaml

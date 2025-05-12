@@ -1,5 +1,6 @@
 resources:
   - certmananger/app.yaml
+  - certmananger/clusterissuer.yaml
 
   # Secrets
   - secrets/cloudflare.yaml
